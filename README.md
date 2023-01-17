@@ -103,38 +103,89 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 ### Procedure
 /* write all the steps invloved */
-
-
+STEP 1: Open Quartus II and select new project and choose the file location.
+STEP 2: Module Declaration. Module should have the file name.
+STEPS 3: Input-Output Delecaration.
+STEPS 4: Use assign declaration and wire to define the functionality of logic circuits.
+STEP 5: At the end give endmodule.
+STEP 6: Run the program and choose RTL viewer to get RTL realization.
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Surendhar A
+RegisterNumber:  22009022
 */
+SR Flip-Flop
+module sr(s,r,clk,Q,Qbar);
+input s,r,clk;
+output Q,Qbar;
+wire X,Y;
+nand (X,s,clk);
+nand (Y,r,clk);
+nand (Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
 
+JK Flip-Flop
+module jk(J,K,clk,Q,Qbar);
+input J,K,clk;
+output Q,Qbar;
+wire P,S;
+nand (P,J,clk,Qbar);
+nand (S,K,clk,Q);
+nand (Q,P,Qbar);
+nand (Qbar,S,Q);
+endmodule
 
+D Flip-Flop
+module DF (D,Clock,Q,Qbar);
+input D,Clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand (X,D,Clock);
+nand (Y,Dbar,Clock);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
 
-
-
+T Flip-Flop
+module TF (T,Clock,Q,Qbar);
+input T,Clock;
+output Q,Qbar;
+wire A,B;
+nand (A,T,Clock,Qbar);
+nand (B,T,Clock,Q);
+nand (Q,A,Qbar);
+nand (Qbar,B,Q);
+endmodule
 
 ### RTL LOGIC FOR FLIPFLOPS 
+SR Flip-Flop:
+![Screenshot_20230116_095902](https://user-images.githubusercontent.com/118352907/212801323-b4ca6a8d-579b-40ad-b86f-f329629ce27a.png)
 
+JK Flip-Flop:
+![Screenshot_20230117_084435](https://user-images.githubusercontent.com/118352907/212802093-f00d5972-1109-46bb-8903-7fda0335a4d6.png)
 
+D Flip-Flop:
+![Screenshot_20230117_085645](https://user-images.githubusercontent.com/118352907/212803561-f32c2a7a-b903-4a2b-824a-0825503fe06b.png)
 
-
-
-
-
-
+T Flip-Flop:
+![Screenshot_20230117_090441](https://user-images.githubusercontent.com/118352907/212804450-6a32b2d1-6b03-4764-b465-80eb986bca4a.png)
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
+SR Flip-Flop:
+![Screenshot_20230117_083402](https://user-images.githubusercontent.com/118352907/212801347-7e844101-d97c-4b74-907a-82fc8b4504ad.png)
 
+JK Flip-Flop:
+![Screenshot_20230117_084820](https://user-images.githubusercontent.com/118352907/212802545-c4d0b314-fa54-4238-bb0a-45ad19054a34.png)
 
+D Flip-Flop:
+![Screenshot_20230117_090009](https://user-images.githubusercontent.com/118352907/212803940-593f32c4-4d60-425b-8c94-764f88b79455.png)
 
-
-
-
-
+T Flip-Flop:
+![Screenshot_20230117_091126](https://user-images.githubusercontent.com/118352907/212805184-f55d1832-f331-4134-8c83-0fe46b4fbae0.png)
 
 ### RESULTS 
+All the flipflops are implemented using verilog and their functionality has been validated using their functional tables.
